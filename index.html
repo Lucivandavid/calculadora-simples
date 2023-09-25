@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora Simples</title>
+    
+       
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="result" id="result">0</div>
+        <div>
+            <button class="button" onclick="clearResult()">C</button>
+            <button class="button" onclick="appendSymbol('/')">/</button>
+            <button class="button" onclick="appendSymbol('*')">*</button>
+            <button class="button" onclick="appendSymbol('-')">-</button>
+        </div>
+        <div>
+            <button class="button" onclick="appendSymbol('7')">7</button>
+            <button class="button" onclick="appendSymbol('8')">8</button>
+            <button class="button" onclick="appendSymbol('9')">9</button>
+            <button class="button" onclick="appendSymbol('+')">+</button>
+        </div>
+        <div>
+            <button class="button" onclick="appendSymbol('4')">4</button>
+            <button class="button" onclick="appendSymbol('5')">5</button>
+            <button class="button" onclick="appendSymbol('6')">6</button>
+            <button class="button" onclick="calculate()">=</button>
+        </div>
+        <div>
+            <button class="button" onclick="appendSymbol('1')">1</button>
+            <button class="button" onclick="appendSymbol('2')">2</button>
+            <button class="button" onclick="appendSymbol('3')">3</button>
+            <button class="button" onclick="appendSymbol('0')">0</button>
+        </div>
+    </div>
+
+    <script>
+        function appendSymbol(symbol) {
+            const resultElement = document.getElementById("result");
+            const currentResult = resultElement.textContent;
+            resultElement.textContent = currentResult === "0" ? symbol : currentResult + symbol;
+        }
+
+        function clearResult() {
+            document.getElementById("result").textContent = "0";
+        }
+
+        function calculate() {
+            const resultElement = document.getElementById("result");
+            const expression = resultElement.textContent;
+            const result = eval(expression);
+            resultElement.textContent = result;
+        }
+    </script>
+</body>
+</html>
